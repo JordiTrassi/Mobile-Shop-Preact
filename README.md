@@ -1,4 +1,4 @@
-<h1 align="center">Mobile Shop App created with Preact <img src="https://icon-library.com/images/icon-for-mobile/icon-for-mobile-27.jpg" alt="music-app" width="40" height="40" /></h1>
+<h1 align="center">Mobile Shop App <img src="https://icon-library.com/images/icon-for-mobile/icon-for-mobile-27.jpg" alt="music-app" width="40" height="40" /> created with Preact.</h1>
 
 <h3>App created with React Vite and Preact.</h3> 
 <p>
