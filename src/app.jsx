@@ -1,11 +1,9 @@
 // import { useState } from 'preact/hooks'
 
-import  Router  from 'preact-router'
+import { Router }  from 'preact-router'
 import { Header } from './components/Header'
 import { HomePage, ProductDetailPage, ProductListPage } from './pages'
-
-import './app.css'
-
+// import Redirect from './router/Redirect'
 
 
 export const App = () => {
@@ -18,9 +16,10 @@ export const App = () => {
           <HomePage path="/" />
           <ProductListPage path="/list" />
           <ProductDetailPage path="/product" />
+          {/* <Redirect path="/*" to="/" /> */}
       </Router> 
-
     </>
+
   )
 }
 
