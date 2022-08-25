@@ -58,7 +58,7 @@ export const Header = () => {
 
   return (
     <Box sx={{ flexGrow: 1}}>
-      <AppBar position="static" sx={{ borderRadius: 3, backgroundColor: '#666666' }}>
+      <AppBar position="static" sx={{ borderRadius: 3, backgroundColor: '#4D4D4D' }}>
         <Toolbar>
           <Tooltip
             title="home"
@@ -84,6 +84,7 @@ export const Header = () => {
           >
             Mobile Shop
           </Typography>
+          <Box sx={{ flexGrow: 1 }} />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -93,7 +94,6 @@ export const Header = () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip
             title="Your Cart"
