@@ -2,8 +2,6 @@ import { Fragment } from 'preact';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { InitialView } from '../views/InitialView';
-import { ProductListPage } from '../pages';
-
 
 
 export const HomePage = () => {
@@ -15,7 +13,7 @@ export const HomePage = () => {
     <Fragment>
       {
         (phones.length)
-          ? <Navigate to="/list"/>
+          ? <Navigate to="/list" />
           : <InitialView />
       }
     </Fragment>

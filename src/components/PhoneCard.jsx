@@ -14,15 +14,24 @@ export const PhoneCard = ({
   return (
       <Card
           className='animate__animated animate__fadeIn'
-          sx={{ display: 'flex', mb: '20px', justifyContent: 'space-between', boxShadow: 6 }}
+          sx={{
+            display: 'flex',
+            mb: '20px',
+            justifyContent: 'space-between',
+            boxShadow: 6,
+            borderRadius: 3,
+          }}
       >
       <Box sx={{ display: 'flex', flexDirection: 'column' }} >
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5" data-testid="test-collectionName">
+          <Typography component="div" variant="h4" data-testid="test-collectionName">
             {brand}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Typography component="div" variant="subtitle1" color="text.secondary">
             {model}
+          </Typography>
+          <Typography component="div" variant="h5" color="text.secondary" sx={{p: 2, ml: 2}}>
+            Price: {price} €
           </Typography>
         </CardContent>
               
@@ -45,7 +54,7 @@ export const PhoneCard = ({
             component="img"
             image={imgUrl}
             alt={model}
-            sx={{ height: 200, width: 'auto' }}     
+            sx={{ height: 200, width: 'auto', p: 2 }}     
         />
     </Card>
   );

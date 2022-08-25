@@ -24,7 +24,7 @@ export const ProductListPage = () => {
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-            sx={{p: 2 }}
+            sx={{p: 3 }}
         >
             {/* <Box
                 item
