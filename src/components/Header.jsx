@@ -81,9 +81,8 @@ export const Header = () => {
   }, [inputValue]);
 
 
-  
-
   return (
+
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="static" sx={{ borderRadius: 3, backgroundColor: '#4D4D4D' }}>
         <Toolbar>
@@ -100,7 +99,7 @@ export const Header = () => {
               sx={{ mr: 1 }}
               href="/"
             >
-                <RingVolumeIcon />
+              <RingVolumeIcon />
             </IconButton>
           </Tooltip>    
           <Typography
@@ -138,8 +137,7 @@ export const Header = () => {
                 </Badge>
               </IconButton> 
             </Tooltip>
-          </Box>
-          
+          </Box> 
         </Toolbar>
       </AppBar>
       

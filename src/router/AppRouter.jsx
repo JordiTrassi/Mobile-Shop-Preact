@@ -8,9 +8,9 @@ export const AppRouter = () => {
       
     <Routes>
      
-        <Route path="home" element={<HomePage />} />
-        <Route path="list" element={<ProductListPage />} />
-        <Route path="product/:id" element={<ProductDetailPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/list" element={<ProductListPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
    
         <Route path="/*" element={<Navigate to="/home" />} />
       
