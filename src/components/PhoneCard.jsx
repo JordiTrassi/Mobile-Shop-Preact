@@ -3,7 +3,7 @@ import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } fr
 import { AddCircle } from '@mui/icons-material';
 
 
-export const AlbumCard = ({
+export const PhoneCard = ({
     brand,
     imgUrl,
     model,
