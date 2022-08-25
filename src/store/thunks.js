@@ -6,10 +6,12 @@ export const getPhones = ({ verifiedInputValue }) => {
         
         const resp = await fetch(`https://front-test-api.herokuapp.com/api/product`);
         const data = await resp.json();
+
+        console.log(data);
   
         (data.resultCount === 0)
             ? dispatch(noApiResults())
-            : dispatch(setPhones({ phones: data.results }));
+            : dispatch(setPhones({ phones: data }));
            
     }
 }

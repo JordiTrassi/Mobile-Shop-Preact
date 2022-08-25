@@ -62,7 +62,6 @@ export const Header = () => {
   };
 
   const onSubmit = async () => {
-    console.log("ON SUBMIT!")
     const verifiedInputValue = await verifyInputValue(inputValue);
     dispatch(startLoadingPhones({ verifiedInputValue }));
     dispatch(getPhones({ verifiedInputValue }));
