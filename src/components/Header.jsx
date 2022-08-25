@@ -1,10 +1,15 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
+import { useDispatch } from 'react-redux';
+import { startLoadingPhones, getPhones } from '../store';
+import { verifyInputValue } from '../helpers/verifyInputValue';
+
+import { AppBar, Badge, Box, IconButton, InputBase, Toolbar, Tooltip, Typography, } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import { AppBar, Badge, Box, IconButton, InputBase, Toolbar, Tooltip, Typography,  } from '@mui/material';
 
 import RingVolumeIcon from '@mui/icons-material/RingVolume';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -48,11 +53,34 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState('');
+
+  const onInputChange = ({ target }) => {
+    setInputValue(target.value);
+  };
+
+  const onSubmit = async () => {
+    console.log("ON SUBMIT!")
+    const verifiedInputValue = await verifyInputValue(inputValue);
+    dispatch(startLoadingPhones({ verifiedInputValue }));
+    dispatch(getPhones({ verifiedInputValue }));
+  };
+
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        onSubmit();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [inputValue]);
+
 
   
 
@@ -91,7 +119,9 @@ export const Header = () => {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search mobile..."
-              inputProps={{ 'aria-label': 'search' }}
+              value={inputValue}
+              onSubmit={onSubmit}
+              onChange={onInputChange}
             />
           </Search>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
