@@ -8,6 +8,7 @@ export const PhoneCard = ({
     imgUrl,
     model,
     price,
+    id,
 }) => {
 
   return (
@@ -26,7 +27,7 @@ export const PhoneCard = ({
         </CardContent>
               
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <Link to={`/album/${collectionId}`} >
+          <Link to={`/product/${id}`} >
             <Tooltip
               title="more info"
               placement="right"
@@ -43,7 +44,7 @@ export const PhoneCard = ({
         <CardMedia
             component="img"
             image={imgUrl}
-            alt={collectionName}
+            alt={model}
             sx={{ height: 200, width: 'auto' }}     
         />
     </Card>

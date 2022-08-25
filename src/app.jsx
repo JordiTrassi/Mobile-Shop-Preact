@@ -1,9 +1,8 @@
-import { Provider } from 'react-redux'
-import { Router } from 'preact-router'
-import { Header } from './components/Header'
-import { HomePage, ProductDetailPage, ProductListPage } from './pages'
-import { store } from './store/store'
-// import Redirect from './router/Redirect'
+import { Provider } from 'react-redux';
+import { Header } from './components/Header';
+import { AppRouter } from './router/AppRouter';
+import { store } from './store/store';
+
 
 
 export const App = () => {
@@ -12,12 +11,7 @@ export const App = () => {
     <>
       <Provider store={store}>
         <Header />
-        <Router>
-            <HomePage path="/" />
-            <ProductListPage path="/list" />
-            <ProductDetailPage path="/product" />
-            {/* <Redirect path="/*" to="/" /> */}
-        </Router> 
+        <AppRouter />
       </Provider>
     </>
 

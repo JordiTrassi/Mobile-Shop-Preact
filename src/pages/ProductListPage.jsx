@@ -1,13 +1,14 @@
 import { useEffect } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Box, Button, Tooltip} from '@mui/material';
+import { Box, Button, Grid, Tooltip} from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
 // import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.css';
 
 import { getPhones } from '../store';
+import { PhoneGridView } from '../views/PhoneGridView';
 
 export const ProductListPage = () => {
 
@@ -15,20 +16,22 @@ export const ProductListPage = () => {
     const { isLoading, verifiedInputValue } = useSelector(state => state.phoneList);
 
     return (
-        <Box
+        <Grid
+            className='animate__animated animate__fadeIn'
             container
-            display="flex"
+            spacing={0}
+            direction="row"
             flexDirection="column"
             alignItems="center"
+            justifyContent="center"
             sx={{p: 2 }}
         >
-            <Box
+            {/* <Box
                 item
                 display="flex"
                 flexDirection="row"
                 justifyContent="center"
-                sx={{mb: '20px', mt: '10px' }}
-                
+                sx={{mb: '20px', mt: '10px' }}    
             >
                 <Button
                     variant="contained"
@@ -60,9 +63,9 @@ export const ProductListPage = () => {
                 </Tooltip>
                 </Button>
                 
-            </Box>
+            </Box> */}
 
-            <PhoneListView />
+            <PhoneGridView />
         
             <Tooltip
             title="more results"
@@ -78,7 +81,7 @@ export const ProductListPage = () => {
                 </Button>
                 
             </Tooltip>
-        </Box>
+        </Grid>
     );
 }
 
