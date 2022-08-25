@@ -7,8 +7,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-
-
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -59,8 +57,8 @@ export const Header = () => {
   
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position="static" sx={{ borderRadius: 3, backgroundColor: '#666666' }}>
         <Toolbar>
           <Tooltip
             title="home"
@@ -84,7 +82,7 @@ export const Header = () => {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MOBILE SHOP
+            Mobile Shop
           </Typography>
           <Search>
             <SearchIconWrapper>
