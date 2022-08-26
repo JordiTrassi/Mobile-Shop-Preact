@@ -1,6 +1,10 @@
+import { useState, useEffect } from 'preact/hooks';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
 import { AddCircle } from '@mui/icons-material';
+import { startLoadingSelectedPhone } from '../store/phoneListSlice';
+import { getSelectedPhone } from '../store/thunks';
 
 
 export const PhoneCard = ({
@@ -10,6 +14,14 @@ export const PhoneCard = ({
     price,
     id,
 }) => {
+
+  const dispatch = useDispatch();
+
+  const selectedPhone = () => {
+    dispatch(startLoadingSelectedPhone(id));
+    dispatch(getSelectedPhone(id));
+  };
+
 
   return (
       <Card
@@ -42,7 +54,7 @@ export const PhoneCard = ({
               placement="right"
               arrow
             >
-              <IconButton>
+              <IconButton onClick={selectedPhone}>
                 <AddCircle fontSize= 'large'/> 
               </IconButton>              
             </Tooltip>

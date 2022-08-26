@@ -8,7 +8,9 @@ export const phoneListSlice = createSlice({
         verifiedInputValue: '',
         errorMessage: '',
         shoppingCart: [],
-        cartItems: 0, 
+        cartItems: 0,
+        selectedPhoneId: '',
+        selectedPhone: {},
     },
     reducers: {
         startLoadingPhones: (state, action) => {
@@ -22,11 +24,21 @@ export const phoneListSlice = createSlice({
             state.errorMessage = '';
         },
         noApiResults: (state, action) => {
+            console.log("NO HAY RESULTADOS");
             state.errorMessage = 'No hay modelos disponibles!';
         },
         addPhoneToCart: (state, action) => {
             state.shoppingCart = action.payload.phone.id;
             state.cartItems = shoppingCart.length;
+        },
+        startLoadingSelectedPhone: (state, action) => {
+            state.isLoading = true;
+            state.selectedPhoneId = action.payload;
+        },
+        setSelectedPhone: (state, {payload}) => {
+            state.isLoading = false;
+            console.log(payload);
+            state.selectedPhone = payload.selectedPhone;
         },
         
 
@@ -34,4 +46,10 @@ export const phoneListSlice = createSlice({
 })
 
 
-export const { startLoadingPhones, setPhones, noApiResults} = phoneListSlice.actions;
+export const {
+    startLoadingPhones,
+    setPhones,
+    noApiResults,
+    startLoadingSelectedPhone,
+    setSelectedPhone,
+} = phoneListSlice.actions;

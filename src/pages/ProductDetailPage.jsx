@@ -10,8 +10,6 @@ export const ProductDetailPage = () => {
   const navigate = useNavigate();
   const { phones } = useSelector(state => state.phoneList);  
   const { id } = useParams(); 
-  
-  console.log(id);
 
   const phone = phones.find(phone => phone.id === id);
 
@@ -56,7 +54,7 @@ export const ProductDetailPage = () => {
         >
           <Typography color="white" variant='h2'sx={{ p: 3 }}>{model}</Typography>
           <Typography color="white" variant='h4' sx={{ p: 3 }}>{brand}</Typography>
-          <Typography color="white" variant='h6' sx={{ pl: 3 }}>{price}</Typography>
+          <Typography color="white" variant='h6' sx={{ pl: 3 }}>Price: {price} €</Typography>
         </Grid>
         <Grid
           item
