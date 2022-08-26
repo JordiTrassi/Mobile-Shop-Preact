@@ -40,6 +40,11 @@ export const phoneListSlice = createSlice({
             console.log(payload);
             state.selectedPhone = payload.selectedPhone;
         },
+        cleanSelectedPhone: (state, action) => {
+            console.log('CLEAN SELECTED PHONE');
+            state.selectedPhoneId = '';
+            state.selectedPhone = {};
+        },
         
 
     },
@@ -52,4 +57,5 @@ export const {
     noApiResults,
     startLoadingSelectedPhone,
     setSelectedPhone,
+    cleanSelectedPhone,
 } = phoneListSlice.actions;

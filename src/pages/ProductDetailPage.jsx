@@ -1,12 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import { cleanSelectedPhone } from '../store/phoneListSlice';
 
 
 
 export const ProductDetailPage = () => {
   
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { phones } = useSelector(state => state.phoneList);  
   const { id } = useParams(); 
@@ -18,6 +20,11 @@ export const ProductDetailPage = () => {
   }
 
   const { brand, imgUrl, model, price } = phone;
+
+  const onBackPage = () => {
+    dispatch(cleanSelectedPhone());
+    navigate(-1);
+  };
 
   return (
   
@@ -65,13 +72,13 @@ export const ProductDetailPage = () => {
             arrow
           >
           <IconButton
-              onClick={() => navigate(-1)}
+            onClick={onBackPage}
               sx={{
                 color: 'white',
                 ':hover': { opacity: 0.5 },
               }}
             >
-              <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
+            <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
             </IconButton>
           </Tooltip>
         </Grid>
