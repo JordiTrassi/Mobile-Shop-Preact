@@ -7,7 +7,6 @@ import { InitialView } from '../views/InitialView';
 export const HomePage = () => {
 
   const { phones } = useSelector(state => state.phoneList);
-  console.log(phones);
   
   return (
     <Fragment>

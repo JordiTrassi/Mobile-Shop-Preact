@@ -37,11 +37,9 @@ export const phoneListSlice = createSlice({
         },
         setSelectedPhone: (state, {payload}) => {
             state.isLoading = false;
-            console.log(payload);
             state.selectedPhone = payload.selectedPhone;
         },
         cleanSelectedPhone: (state, action) => {
-            console.log('CLEAN SELECTED PHONE');
             state.selectedPhoneId = '';
             state.selectedPhone = {};
         },

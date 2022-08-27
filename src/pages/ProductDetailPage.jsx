@@ -3,6 +3,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import { cleanSelectedPhone } from '../store/phoneListSlice';
+import { IsLoading } from '../components/IsLoading';
 
 
 
@@ -10,23 +11,31 @@ export const ProductDetailPage = () => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { phones } = useSelector(state => state.phoneList);  
-  const { id } = useParams(); 
 
-  const phone = phones.find(phone => phone.id === id);
+  const { isLoading } = useSelector(state => state.phoneList);
+  const { brand, imgUrl, model, price, cpu, os, battery, dimentions, weight } = useSelector(state => state.phoneList.selectedPhone);
+  
+  
+  console.log(brand, imgUrl, model, price);
+   
 
-  if (!phone) {
+  if(isLoading) return <IsLoading />
+  
+
+  if (!model) {
     return <Navigate to="/home" />
   }
 
-  const { brand, imgUrl, model, price } = phone;
+  
 
   const onBackPage = () => {
     dispatch(cleanSelectedPhone());
     navigate(-1);
   };
 
+
   return (
+    
   
     <Grid
         className='animate__animated animate__fadeIn'
@@ -78,7 +87,7 @@ export const ProductDetailPage = () => {
                 ':hover': { opacity: 0.5 },
               }}
             >
-            <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
+              <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
             </IconButton>
           </Tooltip>
         </Grid>

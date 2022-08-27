@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { useState, useEffect } from 'preact/hooks';
+// import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
 import { AddCircle } from '@mui/icons-material';
 import { startLoadingSelectedPhone } from '../store/phoneListSlice';
 import { getSelectedPhone } from '../store/thunks';
+import { useNavigate } from 'react-router-dom';
+import { IsLoading } from './IsLoading';
 
 
 export const PhoneCard = ({
@@ -16,23 +18,33 @@ export const PhoneCard = ({
 }) => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const selectedPhone = () => {
+  const { isLoading } = useSelector(state => state.phoneList);
+
+
+  const onSelectedPhone = () => {
+
     dispatch(startLoadingSelectedPhone(id));
-    dispatch(getSelectedPhone(id));
-  };
 
+    if (isLoading) return <IsLoading />;
+    
+    dispatch(getSelectedPhone(id));
+    setTimeout(() => { navigate(`/product/${id}`) }, 60);
+  };
+    
+  
 
   return (
       <Card
-          className='animate__animated animate__fadeIn'
-          sx={{
-            display: 'flex',
-            mb: '20px',
-            justifyContent: 'space-between',
-            boxShadow: 6,
-            borderRadius: 3,
-          }}
+        className='animate__animated animate__fadeIn'
+        sx={{
+          display: 'flex',
+          mb: '20px',
+          justifyContent: 'space-between',
+          boxShadow: 6,
+          borderRadius: 3,
+        }}
       >
       <Box sx={{ display: 'flex', flexDirection: 'column' }} >
         <CardContent sx={{ flex: '1 0 auto' }}>
@@ -48,17 +60,17 @@ export const PhoneCard = ({
         </CardContent>
               
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <Link to={`/product/${id}`} >
+            {/* <Link to={`product/${id}`} key={id} > */}
             <Tooltip
               title="more info"
               placement="right"
               arrow
             >
-              <IconButton onClick={selectedPhone}>
-                <AddCircle fontSize= 'large'/> 
+              <IconButton onClick={onSelectedPhone}>
+                  <AddCircle fontSize= 'large'/> 
               </IconButton>              
             </Tooltip>
-          </Link>
+            {/* </Link> */}
                
         </Box>
       </Box>
