@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import { cleanSelectedPhone } from '../store/phoneListSlice';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { cleanSelectedPhone, addItemToShoppingCart } from '../store/phoneListSlice';
 
 
 
@@ -14,6 +15,7 @@ export const ProductDetailPage = () => {
 
 
   const {
+    id,
     brand,
     imgUrl,
     model,
@@ -28,9 +30,8 @@ export const ProductDetailPage = () => {
     secondaryCmera,
 } = useSelector(state => state.phoneList.selectedPhone);
   
-  
-  
-  console.log(brand, imgUrl, model, price);
+    
+  // console.log(brand, imgUrl, model, price);
    
   
 
@@ -38,12 +39,14 @@ export const ProductDetailPage = () => {
     return <Navigate to="/home" />
   }
 
-  
-
   const onBackPage = () => {
     dispatch(cleanSelectedPhone());
     navigate(-1);
   };
+
+  const onAddShoppingCart = () => {
+    dispatch(addItemToShoppingCart({ itemId: id }));
+  }
 
 
   return (
@@ -71,6 +74,7 @@ export const ProductDetailPage = () => {
       <Grid
         item
         container
+        direction="column"
         className='animate__animated animate__fadeInLeft'
         xs={12}
         sm={12}
@@ -78,10 +82,8 @@ export const ProductDetailPage = () => {
         alignContent= "center"
         justifyContent= "center"
         sx={{
-          
           borderRadius: 3,
-          backgroundColor: 'green',
-          
+          // backgroundColor: 'green',
         }}
       >
         <Box
@@ -99,7 +101,23 @@ export const ProductDetailPage = () => {
               }}
             alt={model}
             src={imgUrl}
-          />
+        />
+        <Tooltip
+            title="Add to shopping cart"
+            arrow
+        >
+          <IconButton
+            onClick={onAddShoppingCart}
+            sx={{
+              color: 'white',
+              pt: 2,
+              mt: 5,
+            }}
+            aria-label="add to shopping cart"
+          >
+            <AddShoppingCartIcon sx={{fontSize: 50}} />
+          </IconButton>  
+        </Tooltip>
         </Grid>
         <Grid
           item
@@ -113,8 +131,8 @@ export const ProductDetailPage = () => {
             <Typography color="white" variant='h3' sx={{pb: 2}}>{brand}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>CPU:</Box> {cpu}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>OS:</Box> {os}</Typography>
-          <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Display Resolution:</Box> {displayResolution}</Typography>
-          <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Cameras:</Box> {primaryCamera} / {secondaryCmera}</Typography>
+            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Display Resolution:</Box> {displayResolution}</Typography>
+            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Cameras:</Box> {primaryCamera} / {secondaryCmera}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Battery:</Box> {battery}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Dimetions:</Box> {dimentions}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Weight:</Box> {weight}</Typography>

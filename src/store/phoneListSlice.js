@@ -43,6 +43,11 @@ export const phoneListSlice = createSlice({
             state.selectedPhoneId = '';
             state.selectedPhone = {};
         },
+        addItemToShoppingCart: (state, action) => {
+            state.shoppingCart = [...state.shoppingCart, action.payload]
+            console.log(state.shoppingCart);
+            console.log(state.shoppingCart.length);
+        },
         
 
     },
@@ -56,4 +61,5 @@ export const {
     startLoadingSelectedPhone,
     setSelectedPhone,
     cleanSelectedPhone,
+    addItemToShoppingCart,
 } = phoneListSlice.actions;
