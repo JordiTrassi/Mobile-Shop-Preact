@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startLoadingPhones, getPhones } from '../store';
 import { verifyInputValue } from '../helpers/verifyInputValue';
 
@@ -56,6 +56,7 @@ export const Header = () => {
 
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
+  const { shoppingCart } = useSelector(state => state.phoneList);
   
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
@@ -92,14 +93,13 @@ export const Header = () => {
             placement="bottom"
           >
             <IconButton
-              size="large"
               edge="start"
               color="inherit"
               aria-label="open drawer"
               sx={{ mr: 1 }}
               href="/"
             >
-              <RingVolumeIcon />
+              <RingVolumeIcon sx={{fontSize: 35}} />
             </IconButton>
           </Tooltip>    
           <Typography
@@ -132,7 +132,7 @@ export const Header = () => {
                 size="large"
                 color="inherit"
               >
-                <Badge badgeContent={1} color="error">
+                <Badge badgeContent={shoppingCart.length} color="error">
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton> 
