@@ -1,4 +1,4 @@
-// import { useState, useEffect } from 'preact/hooks';
+// import { useEffect } from 'preact/hooks';
 // import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
@@ -7,6 +7,7 @@ import { startLoadingSelectedPhone } from '../store/phoneListSlice';
 import { getSelectedPhone } from '../store/thunks';
 import { useNavigate } from 'react-router-dom';
 import { IsLoading } from './IsLoading';
+
 
 
 export const PhoneCard = ({
@@ -27,15 +28,15 @@ export const PhoneCard = ({
 
     dispatch(startLoadingSelectedPhone(id));
 
-    if (isLoading) return <IsLoading />;
+    (isLoading)
+      ? <IsLoading />
+      : setTimeout(() => { navigate(`/product/${id}`) }, 90);
     
     dispatch(getSelectedPhone(id));
-    setTimeout(() => { navigate(`/product/${id}`) }, 60);
+    
   };
     
-  
-
-  return (
+    return (
       <Card
         className='animate__animated animate__fadeIn'
         sx={{

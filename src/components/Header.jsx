@@ -56,7 +56,7 @@ export const Header = () => {
 
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
-
+  
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
   };
@@ -80,7 +80,7 @@ export const Header = () => {
     };
   }, [inputValue]);
 
-
+  
   return (
 
     <Box sx={{ flexGrow: 1}}>

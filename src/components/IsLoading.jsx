@@ -1,12 +1,20 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 
 
 export const IsLoading = () => {
   
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', p:10 }}>
-      <CircularProgress />
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        mt: 20,
+      }}>
+      <Typography>Is Loading ...</Typography>
+      <CircularProgress sx={{mt: 3}} />
     </Box>
   );
 }

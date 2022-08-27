@@ -67,7 +67,7 @@ export const ProductListPage = () => {
 
             <PhoneGridView />
         
-            <Tooltip
+            {/* <Tooltip
             title="more results"
             arrow
             >
@@ -80,7 +80,7 @@ export const ProductListPage = () => {
                     Next Page
                 </Button>
                 
-            </Tooltip>
+            </Tooltip> */}
         </Grid>
     );
 }
