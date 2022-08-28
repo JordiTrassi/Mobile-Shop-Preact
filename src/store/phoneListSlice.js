@@ -10,7 +10,10 @@ export const phoneListSlice = createSlice({
         shoppingCart: [],
         cartItems: 0,
         selectedPhoneId: '',
+        selectedPhoneColor: '',
+        selectedPhoneMemory: '',
         selectedPhone: {},
+        selectedPhoneOptions: 0,
     },
     reducers: {
         startLoadingPhones: (state, action) => {
@@ -42,9 +45,24 @@ export const phoneListSlice = createSlice({
         cleanSelectedPhone: (state, action) => {
             state.selectedPhoneId = '';
             state.selectedPhone = {};
+            state.selectedPhoneColor = '';
+            state.selectedPhoneMemory = '';
+            state.selectedPhoneOptions = 0;
         },
         addItemToShoppingCart: (state, action) => {
             state.shoppingCart = [...state.shoppingCart, action.payload];
+        },
+        addSelectedPhoneColor: (state, action) => {
+            console.log(action.payload);
+            state.selectedPhoneColor = action.payload;
+            state.selectedPhoneOptions += 1;
+            console.log(state.selectedPhoneOptions);
+        },
+        addSelectedPhoneMemory: (state, action) => {
+            console.log(action.payload);
+            state.selectedPhoneMemory = action.payload;
+            state.selectedPhoneOptions += 100;
+            console.log(state.selectedPhoneOptions);
         },
         
 
@@ -60,4 +78,6 @@ export const {
     setSelectedPhone,
     cleanSelectedPhone,
     addItemToShoppingCart,
+    addSelectedPhoneColor,
+    addSelectedPhoneMemory,
 } = phoneListSlice.actions;

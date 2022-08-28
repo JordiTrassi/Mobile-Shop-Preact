@@ -1,28 +1,42 @@
+import { useEffect, useState } from 'preact/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSelectedPhoneColor } from '../store/phoneListSlice';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
-import { useSelector } from 'react-redux';
-
 
 export const PhoneColors = () => {
+    
+    const dispatch = useDispatch();
     const { colors } = useSelector(state => state.phoneList.selectedPhone);
-    console.log(colors);
+    const [value, setValue] = useState(colors[0]);
+    
+    const onSelectedColor = ({target}) => {
+        setValue(target.value);
+        dispatch(addSelectedPhoneColor(target.value))
+    }
+
+    useEffect(() => {
+        if (colors.length === 1) {
+            dispatch(addSelectedPhoneColor(value));
+        }
+    },[])
+    
 
     return (
       
-    <FormControl sx={{p: 2}}>
-        <FormLabel id="demo-controlled-radio-buttons-group" sx={{ color: 'white', fontSize: 20}}>Select Color:</FormLabel>
-        <RadioGroup
-            // aria-labelledby="demo-controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
-            // value={value}
-            // onChange={handleChange}
-          >
-            {                   
-                colors.map( color => (
-                    <FormControlLabel value={color} control={<Radio />} label={color} sx={{ml: 2}} />    
+        <FormControl sx={{p: 2}}>
+            <FormLabel id="demo-controlled-radio-buttons-group" sx={{ color: 'white', fontSize: 20}}>Select Color:</FormLabel>
+            <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                value={value}
+                onChange={onSelectedColor}
+            >
+                {                   
+                    colors.map( color => (
+                        <FormControlLabel value={color} control={<Radio />} label={color} sx={{ml: 2}} />    
                     )) 
-            }
-
-        </RadioGroup>
-    </FormControl>
-  )
+                }
+            </RadioGroup>
+        </FormControl>
+    )
 }
