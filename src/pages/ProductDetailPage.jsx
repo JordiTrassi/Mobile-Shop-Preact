@@ -1,20 +1,29 @@
+import { useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Modal, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cleanSelectedPhone, addItemToShoppingCart } from '../store/phoneListSlice';
 import { PhoneColors, PhoneInternalMemory } from '../components';
 
-
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 
 export const ProductDetailPage = () => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
   const {
     id,
     brand,
@@ -34,7 +43,9 @@ export const ProductDetailPage = () => {
     
   // console.log(brand, imgUrl, model, price);
    
-  
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   if (!model) {
     return <Navigate to="/home" />
@@ -46,12 +57,13 @@ export const ProductDetailPage = () => {
   };
 
   const onAddShoppingCart = () => {
-    dispatch(addItemToShoppingCart({ itemId: id }));
+    handleOpen();
+    // dispatch(addItemToShoppingCart({ itemId: id }));
   }
 
 
   return (
-  
+  <>
     <Grid
       className='animate__animated animate__fadeIn'
       container
@@ -163,7 +175,23 @@ export const ProductDetailPage = () => {
             </IconButton>
           </Tooltip>
         </Grid>
-     </Grid>
+    </Grid>
+    <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        >
+        <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+            Select Options:
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Before adding the product to the shopping cart, select the color and/or internal memory.
+            </Typography>
+        </Box>
+    </Modal>
+    </>
   )
 }
 
