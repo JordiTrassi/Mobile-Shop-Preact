@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cleanSelectedPhone, addItemToShoppingCart } from '../store/phoneListSlice';
+import { PhoneColors } from '../components';
 
 
 
@@ -28,7 +29,7 @@ export const ProductDetailPage = () => {
     displayResolution,
     primaryCamera,
     secondaryCmera,
-} = useSelector(state => state.phoneList.selectedPhone);
+  } = useSelector(state => state.phoneList.selectedPhone);
   
     
   // console.log(brand, imgUrl, model, price);
@@ -50,7 +51,6 @@ export const ProductDetailPage = () => {
 
 
   return (
-    
   
     <Grid
       className='animate__animated animate__fadeIn'
@@ -81,10 +81,7 @@ export const ProductDetailPage = () => {
         md={6}
         alignContent= "center"
         justifyContent= "center"
-        sx={{
-          borderRadius: 3,
-          // backgroundColor: 'green',
-        }}
+        sx={{ borderRadius: 3 }}
       >
         <Box
           item
@@ -97,7 +94,6 @@ export const ProductDetailPage = () => {
                 maxHeight: { xs: 'auto', md: 'auto' },
                 maxWidth: { xs: 250, md: 400 },
                 borderRadius: 5,
-                
               }}
             alt={model}
             src={imgUrl}
@@ -123,8 +119,7 @@ export const ProductDetailPage = () => {
           item
           container
           direction="column"
-          xs={12} sm={12} md={6}
-          // sx={{ ml: 6 }} 
+          xs={12} sm={12} md={6} 
         >
           <Grid item sx={{ backgroundColor:'red', pl: 5}}>
             <Typography color="white" variant='h2'sx={{pt: 3 }}>{model}</Typography>
@@ -141,9 +136,11 @@ export const ProductDetailPage = () => {
           </Grid>
           <Grid
             item
-            sx={{ backgroundColor:'red'}}  
+            container
+            direction="row"
+            sx={{ backgroundColor:'blue'}}  
           >
-            
+            <PhoneColors />
           </Grid>
         </Grid>
         <Grid

@@ -124,16 +124,16 @@ export const Header = () => {
           </Search>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip
-            title="Your Cart"
-            arrow
-            placement="bottom"
+              title="Your Cart"
+              arrow
+              placement="bottom"
             >
               <IconButton
                 size="large"
                 color="inherit"
               >
                 <Badge badgeContent={shoppingCart.length} color="error">
-                  <ShoppingCartIcon />
+                  <ShoppingCartIcon sx={{fontSize: 30}}/>
                 </Badge>
               </IconButton> 
             </Tooltip>

@@ -16,6 +16,7 @@ export const ProductListPage = () => {
     const { isLoading, verifiedInputValue } = useSelector(state => state.phoneList);
 
     return (
+
         <Grid
             className='animate__animated animate__fadeIn'
             container
@@ -26,61 +27,7 @@ export const ProductListPage = () => {
             justifyContent="center"
             sx={{p: 3 }}
         >
-            {/* <Box
-                item
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                sx={{mb: '20px', mt: '10px' }}    
-            >
-                <Button
-                    variant="contained"
-                    disabled={!viewGrid}
-                    onClick={() => dispatch(changingViewGrid(false))}
-                    sx={{ p: 2, mr: 3 }}
-                >
-                <Tooltip
-                    title="List View"
-                    arrow
-                    placement="left"
-                >
-                    <FormatListBulletedIcon sx={{fontSize: 32}} />  
-                </Tooltip>
-                </Button>
-            
-                <Button
-                    variant="contained"
-                    disabled={viewGrid}
-                    onClick={() => dispatch(changingViewGrid(true))}
-                    sx={{ p: 2, ml: 3 }}
-                >
-                <Tooltip
-                    title="Grid View"
-                    arrow
-                    placement="right"
-                >
-                    <GridViewIcon sx={{fontSize: 32}} />  
-                </Tooltip>
-                </Button>
-                
-            </Box> */}
-
             <PhoneGridView />
-        
-            {/* <Tooltip
-            title="more results"
-            arrow
-            >
-                <Button
-                    variant="contained"
-                    disabled={isLoading}
-                    onClick={() => dispatch(getAlbums({ page, verifiedInputValue }))}
-                    sx={{ p: 2, mb: '30px' }}
-                >
-                    Next Page
-                </Button>
-                
-            </Tooltip> */}
         </Grid>
     );
 }

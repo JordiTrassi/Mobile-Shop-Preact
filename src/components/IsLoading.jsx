@@ -13,7 +13,7 @@ export const IsLoading = () => {
         alignItems: 'center',
         mt: 20,
       }}>
-      <Typography>Is Loading ...</Typography>
+      <Typography sx={{fontSize: 30}}>Is Loading ...</Typography>
       <CircularProgress sx={{mt: 3}} />
     </Box>
   );

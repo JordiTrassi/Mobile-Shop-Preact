@@ -30,13 +30,14 @@ export const PhoneCard = ({
 
     (isLoading)
       ? <IsLoading />
-      : setTimeout(() => { navigate(`/product/${id}`) }, 90);
+      : setTimeout(() => { navigate(`/product/${id}`) }, 150);
     
     dispatch(getSelectedPhone(id));
     
   };
     
-    return (
+  return (
+      
       <Card
         className='animate__animated animate__fadeIn'
         sx={{
@@ -61,25 +62,22 @@ export const PhoneCard = ({
         </CardContent>
               
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-            {/* <Link to={`product/${id}`} key={id} > */}
-            <Tooltip
-              title="more info"
-              placement="right"
-              arrow
-            >
-              <IconButton onClick={onSelectedPhone}>
-                  <AddCircle fontSize= 'large'/> 
-              </IconButton>              
-            </Tooltip>
-            {/* </Link> */}
-               
+          <Tooltip
+            title="more info"
+            placement="right"
+            arrow
+          >
+            <IconButton onClick={onSelectedPhone}>
+              <AddCircle fontSize= 'large'/> 
+            </IconButton>              
+          </Tooltip>               
         </Box>
       </Box>
         <CardMedia
-            component="img"
-            image={imgUrl}
-            alt={model}
-            sx={{ height: 200, width: 'auto', p: 2 }}     
+          component="img"
+          image={imgUrl}
+          alt={model}
+          sx={{ height: 200, width: 'auto', p: 2 }}     
         />
     </Card>
   );
