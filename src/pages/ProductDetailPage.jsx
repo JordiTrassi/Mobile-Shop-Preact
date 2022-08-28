@@ -40,8 +40,8 @@ export const ProductDetailPage = () => {
     secondaryCmera,
   } = useSelector(state => state.phoneList.selectedPhone);
   
-    
-  // console.log(brand, imgUrl, model, price);
+  const { selectedPhoneOptions, selectedPhoneColor, selectedPhoneMemory } = useSelector(state => state.phoneList);
+  
    
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -57,140 +57,141 @@ export const ProductDetailPage = () => {
   };
 
   const onAddShoppingCart = () => {
-    handleOpen();
-    // dispatch(addItemToShoppingCart({ itemId: id }));
+    (selectedPhoneOptions >= 101) 
+      ? dispatch(addItemToShoppingCart({ itemId: id, itemColor: selectedPhoneColor, itemMemory: selectedPhoneMemory }))
+      : handleOpen();
   }
 
 
   return (
-  <>
-    <Grid
-      className='animate__animated animate__fadeIn'
-      container
-      spacing={2}
-      direction="row"
-      alignItems="center"
-      justifyContent="center"
-      sx={{
-        maxWidth: '100%',
-        minHeight: '90vh',
-        backgroundColor: '#4D4D4D',
-        borderRadius: 3,
-        boxShadow: 6,
-        ml: 'auto', 
-        mr: 'auto',
-        mt: '20px'
-      }}
-    >
+    <>
       <Grid
-        item
+        className='animate__animated animate__fadeIn'
         container
-        direction="column"
-        className='animate__animated animate__fadeInLeft'
-        xs={12}
-        sm={12}
-        md={6}
-        alignContent= "center"
-        justifyContent= "center"
-        sx={{ borderRadius: 3 }}
+        spacing={2}
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        sx={{
+          maxWidth: '100%',
+          minHeight: '90vh',
+          backgroundColor: '#4D4D4D',
+          borderRadius: 3,
+          boxShadow: 6,
+          ml: 'auto', 
+          mr: 'auto',
+          mt: '20px'
+        }}
       >
-        <Box
-          item
-          component="img"
-          position="relative"
-            sx={{
-                boxShadow: 6,
-                height: 'auto',
-                width: 500,
-                maxHeight: { xs: 'auto', md: 'auto' },
-                maxWidth: { xs: 250, md: 400 },
-                borderRadius: 5,
-              }}
-            alt={model}
-            src={imgUrl}
-        />
-        <Tooltip
-            title="Add to shopping cart"
-            arrow
-        >
-          <IconButton
-            onClick={onAddShoppingCart}
-            sx={{
-              color: 'white',
-              pt: 2,
-              mt: 5,
-            }}
-            aria-label="add to shopping cart"
-          >
-            <AddShoppingCartIcon sx={{fontSize: 50}} />
-          </IconButton>  
-        </Tooltip>
-        </Grid>
         <Grid
           item
           container
           direction="column"
-          xs={12} sm={12} md={6} 
+          className='animate__animated animate__fadeInLeft'
+          xs={12}
+          sm={12}
+          md={6}
+          alignContent= "center"
+          justifyContent= "center"
+          sx={{ borderRadius: 3 }}
         >
-          <Grid item sx={{ pl: 5}}>
-            <Typography color="white" variant='h2'sx={{pt: 3 }}>{model}</Typography>
-            <Typography color="white" variant='h3' sx={{pb: 2}}>{brand}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>CPU:</Box> {cpu}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>OS:</Box> {os}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Display Resolution:</Box> {displayResolution}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Cameras:</Box> {primaryCamera} / {secondaryCmera}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Battery:</Box> {battery}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Dimetions:</Box> {dimentions}</Typography>
-            <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Weight:</Box> {weight}</Typography>
-            <Typography color="white" variant='h4' sx={{p: 2}}>Price: {price} €</Typography>
-
+          <Box
+            item
+            component="img"
+            position="relative"
+              sx={{
+                  boxShadow: 6,
+                  height: 'auto',
+                  width: 500,
+                  maxHeight: { xs: 'auto', md: 'auto' },
+                  maxWidth: { xs: 250, md: 400 },
+                  borderRadius: 5,
+                }}
+              alt={model}
+              src={imgUrl}
+          />
+          <Tooltip
+              title="Add to shopping cart"
+              arrow
+          >
+            <IconButton
+              onClick={onAddShoppingCart}
+              sx={{
+                color: 'white',
+                pt: 2,
+                mt: 5,
+              }}
+              aria-label="add to shopping cart"
+            >
+              <AddShoppingCartIcon sx={{fontSize: 50}} />
+            </IconButton>  
+          </Tooltip>
           </Grid>
           <Grid
             item
             container
-            direction="row"
-            justifyContent="center"
-            sx={{ }}  
+            direction="column"
+            xs={12} sm={12} md={6} 
           >
-            <PhoneColors />
-            <PhoneInternalMemory />
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          sx={{ml: 6}} 
-        >
-          <Tooltip
-            title="back"
-            arrow
-          >
-          <IconButton
-            onClick={onBackPage}
-              sx={{
-                color: 'white',
-                ':hover': { opacity: 0.5 },
-              }}
+            <Grid item sx={{ pl: 5}}>
+              <Typography color="white" variant='h2'sx={{pt: 3 }}>{model}</Typography>
+              <Typography color="white" variant='h3' sx={{pb: 2}}>{brand}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>CPU:</Box> {cpu}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>OS:</Box> {os}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Display Resolution:</Box> {displayResolution}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Cameras:</Box> {primaryCamera} / {secondaryCmera}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Battery:</Box> {battery}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Dimetions:</Box> {dimentions}</Typography>
+              <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Weight:</Box> {weight}</Typography>
+              <Typography color="white" variant='h4' sx={{p: 2}}>Price: {price} €</Typography>
+
+            </Grid>
+            <Grid
+              item
+              container
+              direction="row"
+              justifyContent="center"
+              sx={{ }}  
             >
-              <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
-            </IconButton>
-          </Tooltip>
-        </Grid>
-    </Grid>
-    <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        >
-        <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-            Select Options:
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Before adding the product to the shopping cart, select the color and/or internal memory.
-            </Typography>
-        </Box>
-    </Modal>
+              <PhoneColors />
+              <PhoneInternalMemory />
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            sx={{ml: 6}} 
+          >
+            <Tooltip
+              title="back"
+              arrow
+            >
+            <IconButton
+              onClick={onBackPage}
+                sx={{
+                  color: 'white',
+                  ':hover': { opacity: 0.5 },
+                }}
+              >
+                <ArrowCircleLeftIcon sx={{ fontSize: 45 }} />
+              </IconButton>
+            </Tooltip>
+          </Grid>
+      </Grid>
+      <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          >
+          <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+              Select Options:
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Before adding the product to the shopping cart, select the color and/or internal memory.
+              </Typography>
+          </Box>
+      </Modal>
     </>
   )
 }

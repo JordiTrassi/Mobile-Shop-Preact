@@ -8,7 +8,6 @@ export const phoneListSlice = createSlice({
         verifiedInputValue: '',
         errorMessage: '',
         shoppingCart: [],
-        cartItems: 0,
         selectedPhoneId: '',
         selectedPhoneColor: '',
         selectedPhoneMemory: '',
@@ -53,16 +52,12 @@ export const phoneListSlice = createSlice({
             state.shoppingCart = [...state.shoppingCart, action.payload];
         },
         addSelectedPhoneColor: (state, action) => {
-            console.log(action.payload);
             state.selectedPhoneColor = action.payload;
             state.selectedPhoneOptions += 1;
-            console.log(state.selectedPhoneOptions);
         },
         addSelectedPhoneMemory: (state, action) => {
-            console.log(action.payload);
             state.selectedPhoneMemory = action.payload;
             state.selectedPhoneOptions += 100;
-            console.log(state.selectedPhoneOptions);
         },
         
 
