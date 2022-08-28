@@ -4,7 +4,7 @@ import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cleanSelectedPhone, addItemToShoppingCart } from '../store/phoneListSlice';
-import { PhoneColors } from '../components';
+import { PhoneColors, PhoneInternalMemory } from '../components';
 
 
 
@@ -70,7 +70,6 @@ export const ProductDetailPage = () => {
         mt: '20px'
       }}
     >
-      
       <Grid
         item
         container
@@ -121,7 +120,7 @@ export const ProductDetailPage = () => {
           direction="column"
           xs={12} sm={12} md={6} 
         >
-          <Grid item sx={{ backgroundColor:'red', pl: 5}}>
+          <Grid item sx={{ pl: 5}}>
             <Typography color="white" variant='h2'sx={{pt: 3 }}>{model}</Typography>
             <Typography color="white" variant='h3' sx={{pb: 2}}>{brand}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>CPU:</Box> {cpu}</Typography>
@@ -131,16 +130,18 @@ export const ProductDetailPage = () => {
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Battery:</Box> {battery}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Dimetions:</Box> {dimentions}</Typography>
             <Typography color="white" variant='h6' sx={{}}><Box sx={{ fontStyle: 'italic' }}>Weight:</Box> {weight}</Typography>
-            <Typography color="white" variant='h5' sx={{pt: 2}}>Price: {price} €</Typography>
+            <Typography color="white" variant='h4' sx={{p: 2}}>Price: {price} €</Typography>
 
           </Grid>
           <Grid
             item
             container
             direction="row"
-            sx={{ backgroundColor:'blue'}}  
+            justifyContent="center"
+            sx={{ }}  
           >
             <PhoneColors />
+            <PhoneInternalMemory />
           </Grid>
         </Grid>
         <Grid
