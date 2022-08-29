@@ -72,11 +72,10 @@ export const Header = () => {
 
   const onPayItems = () => {
     
-    if (shoppingCart.length === 0) {
+    if (shoppingCartApiConfirmed === 0) {
       Swal.fire({ icon: 'error', title: 'Ooops..', text: 'Before paying add products in the cart.', confirmButtonColor: '#4D4D4D' });
     } else {
-      console.log(shoppingCartApiConfirmed);
-      
+      Swal.fire({ icon: 'success', title: `You have ${shoppingCartApiConfirmed} itmes`, text: 'Click OK to pay the products.', confirmButtonColor: '#4D4D4D' });   
     }
   };
 
