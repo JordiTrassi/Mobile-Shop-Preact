@@ -9,17 +9,9 @@ export const HomePage = () => {
 
   const { phones, isLoading } = useSelector(state => state.phoneList);
   
-  
 
   return (
     <Fragment>
-      
-      {/* {
-        (phones.length)
-          ? <Navigate to="/list" />
-          : <InitialView />
-      } */}
-
       {
         (isLoading)
           ? <IsLoading />
@@ -28,7 +20,6 @@ export const HomePage = () => {
             : <InitialView />
       }
     </Fragment>
-   
   )
 }
 

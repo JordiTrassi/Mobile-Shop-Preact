@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { startLoadingPhones, getPhones, addApiShoppingCart } from '../store';
+import { startLoadingPhones, getPhones } from '../store';
 import { verifyInputValue } from '../helpers/verifyInputValue';
 
 import { AppBar, Badge, Box, IconButton, InputBase, Toolbar, Tooltip, Typography, } from '@mui/material';
@@ -152,7 +152,6 @@ export const Header = () => {
           </Box> 
         </Toolbar>
       </AppBar>
-      
     </Box>
   );
 }

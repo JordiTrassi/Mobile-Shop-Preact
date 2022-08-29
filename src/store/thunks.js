@@ -8,7 +8,7 @@ export const getPhones = ({ verifiedInputValue }) => {
 
         const resp = await fetch('https://front-test-api.herokuapp.com/api/product/');
         const data = await resp.json();
-        console.log(data);
+        // console.log(data);
         
         (data.code === 0)
             ? dispatch(noApiResults())
@@ -51,6 +51,3 @@ export const addApiShoppingCart = (params) => {
 
 }
 
-
-
-// ?${verifiedInputValue}&limit=${page * 20}&entity=album

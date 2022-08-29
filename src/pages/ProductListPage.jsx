@@ -1,18 +1,10 @@
-import { useEffect } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { Box, Button, Grid, Tooltip} from '@mui/material';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import GridViewIcon from '@mui/icons-material/GridView';
-// import Swal from 'sweetalert2';
-// import 'sweetalert2/dist/sweetalert2.css';
-
-import { getPhones } from '../store';
+import { Grid } from '@mui/material';
 import { PhoneGridView } from '../views/PhoneGridView';
 
 export const ProductListPage = () => {
 
-    const dispatch = useDispatch();
     const { isLoading, verifiedInputValue } = useSelector(state => state.phoneList);
 
     return (

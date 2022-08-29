@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
+
 import { Box, Grid, IconButton, Modal, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cleanSelectedPhone, addItemToShoppingCart } from '../store/phoneListSlice';
+
 import { PhoneColors, PhoneInternalMemory } from '../components';
 import { addApiShoppingCart } from '../store';
 
@@ -43,7 +45,6 @@ export const ProductDetailPage = () => {
   
   const { selectedPhoneOptions, selectedPhoneColorCode, selectedPhoneStorageCode } = useSelector(state => state.phoneList);
   
-   
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

@@ -38,7 +38,6 @@ export const PhoneInternalMemory = () => {
                     <FormControlLabel value={memory.code} control={<Radio />} label={memory.name} sx={{ml: 2}} />    
                     )) 
             }
-
         </RadioGroup>
     </FormControl>
   )

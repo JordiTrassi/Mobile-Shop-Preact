@@ -1,5 +1,3 @@
-// import { useEffect } from 'preact/hooks';
-// import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
 import { AddCircle } from '@mui/icons-material';
