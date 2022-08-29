@@ -40,7 +40,7 @@ export const ProductDetailPage = () => {
     secondaryCmera,
   } = useSelector(state => state.phoneList.selectedPhone);
   
-  const { selectedPhoneOptions, selectedPhoneColor, selectedPhoneMemory } = useSelector(state => state.phoneList);
+  const { selectedPhoneOptions, selectedPhoneColorCode, selectedPhoneStorageCode } = useSelector(state => state.phoneList);
   
    
   const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ export const ProductDetailPage = () => {
 
   const onAddShoppingCart = () => {
     (selectedPhoneOptions >= 101) 
-      ? dispatch(addItemToShoppingCart({ itemId: id, itemColor: selectedPhoneColor, itemMemory: selectedPhoneMemory }))
+      ? dispatch(addItemToShoppingCart({ itemId: id, itemColorCode: selectedPhoneColorCode, itemStorageCode: selectedPhoneStorageCode }))
       : handleOpen();
   }
 

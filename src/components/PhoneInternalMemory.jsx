@@ -7,8 +7,9 @@ import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mu
 export const PhoneInternalMemory = () => {
 
   const dispatch = useDispatch();
-  const { internalMemory } = useSelector(state => state.phoneList.selectedPhone);
-  const [memory, setMemory] = useState(internalMemory[0]);
+  const { storages } = useSelector(state => state.phoneList.selectedPhone.options);
+
+  const [memory, setMemory] = useState(`${storages[0].code}`);
   
   const onSelectedMemory = ({target}) => {
         setMemory(target.value);
@@ -16,7 +17,7 @@ export const PhoneInternalMemory = () => {
   }
 
   useEffect(() => {
-    if (internalMemory.length === 1) {
+    if (storages.length === 1) {
         dispatch(addSelectedPhoneMemory(memory));
     }
   },[])
@@ -33,8 +34,8 @@ export const PhoneInternalMemory = () => {
             onChange={onSelectedMemory}
           >
             {                   
-                internalMemory.map( memory => (
-                    <FormControlLabel value={memory} control={<Radio />} label={memory} sx={{ml: 2}} />    
+                storages.map( memory => (
+                    <FormControlLabel value={memory.code} control={<Radio />} label={memory.name} sx={{ml: 2}} />    
                     )) 
             }
 

@@ -9,8 +9,8 @@ export const phoneListSlice = createSlice({
         errorMessage: '',
         shoppingCart: [],
         selectedPhoneId: '',
-        selectedPhoneColor: '',
-        selectedPhoneMemory: '',
+        selectedPhoneColorCode: '',
+        selectedPhoneStorageCode: '',
         selectedPhone: {},
         selectedPhoneOptions: 0,
     },
@@ -44,19 +44,19 @@ export const phoneListSlice = createSlice({
         cleanSelectedPhone: (state, action) => {
             state.selectedPhoneId = '';
             state.selectedPhone = {};
-            state.selectedPhoneColor = '';
-            state.selectedPhoneMemory = '';
+            state.selectedPhoneColorCode = '';
+            state.selectedPhoneStorageCode = '';
             state.selectedPhoneOptions = 0;
         },
         addItemToShoppingCart: (state, action) => {
             state.shoppingCart = [...state.shoppingCart, action.payload];
         },
         addSelectedPhoneColor: (state, action) => {
-            state.selectedPhoneColor = action.payload;
+            state.selectedPhoneColorCode = action.payload;
             state.selectedPhoneOptions += 1;
         },
         addSelectedPhoneMemory: (state, action) => {
-            state.selectedPhoneMemory = action.payload;
+            state.selectedPhoneStorageCode = action.payload;
             state.selectedPhoneOptions += 100;
         },
         

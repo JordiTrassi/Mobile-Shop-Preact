@@ -4,8 +4,11 @@ export const getPhones = ({ verifiedInputValue }) => {
     
     return async(dispatch) => {
         
-        const resp = await fetch("https://front-test-api.herokuapp.com/api/product/");
+        //TODO: Filtrar busqueda
+
+        const resp = await fetch('https://front-test-api.herokuapp.com/api/product/');
         const data = await resp.json();
+        console.log(data);
         
         (data.code === 0)
             ? dispatch(noApiResults())
@@ -20,15 +23,29 @@ export const getSelectedPhone = (id) => {
         
         let resp = await fetch(`https://front-test-api.herokuapp.com/api/product/${id}`);
         let phoneData = await resp.json();
-        
-        
-        console.log(phoneData);
 
         (phoneData.code === 0)
             ? dispatch(noApiResults())
             : dispatch(setSelectedPhone({ selectedPhone: phoneData }));
            
     }
+}
+
+export const addApiShoppingCart = (params) => {
+
+    // TODO: Hacer la peticion POST a la API
+    return async (dispatch) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(params)
+        };
+
+        let resp = await fetch(`https://front-test-api.herokuapp.com/api/cart`, options);
+        let response = await resp.json();
+
+        console.log(response);
+    }
+
 }
 
 

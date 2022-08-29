@@ -6,8 +6,9 @@ import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mu
 export const PhoneColors = () => {
     
     const dispatch = useDispatch();
-    const { colors } = useSelector(state => state.phoneList.selectedPhone);
-    const [value, setValue] = useState(colors[0]);
+    const { colors } = useSelector(state => state.phoneList.selectedPhone.options);
+
+    const [value, setValue] = useState(`${colors[0].code}`);
     
     const onSelectedColor = ({target}) => {
         setValue(target.value);
@@ -33,7 +34,7 @@ export const PhoneColors = () => {
             >
                 {                   
                     colors.map( color => (
-                        <FormControlLabel value={color} control={<Radio />} label={color} sx={{ml: 2}} />    
+                        <FormControlLabel value={color.code} control={<Radio />} label={color.name} sx={{ml: 2}} />    
                     )) 
                 }
             </RadioGroup>
