@@ -1,4 +1,4 @@
-import { setPhones, noApiResults, setSelectedPhone } from './phoneListSlice';
+import { setPhones, noApiResults, setSelectedPhone, addPhoneToUserCart } from './phoneListSlice';
 
 export const getPhones = ({ verifiedInputValue }) => {
     
@@ -33,17 +33,20 @@ export const getSelectedPhone = (id) => {
 
 export const addApiShoppingCart = (params) => {
 
-    // TODO: Hacer la peticion POST a la API
-    return async (dispatch) => {
-        const options = {
-            method: 'POST',
-            body: JSON.stringify(params)
-        };
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params)
+    };
 
-        let resp = await fetch(`https://front-test-api.herokuapp.com/api/cart`, options);
+    return async (dispatch) => {
+
+        let resp = await fetch(`https://front-test-api.herokuapp.com/api/cart/`, options);
         let response = await resp.json();
 
-        console.log(response);
+        (response.code === 0)
+            ? console.log("Api connection Error")
+            : dispatch(addPhoneToUserCart({ count: response.count }));
     }
 
 }

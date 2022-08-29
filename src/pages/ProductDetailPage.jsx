@@ -6,6 +6,7 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cleanSelectedPhone, addItemToShoppingCart } from '../store/phoneListSlice';
 import { PhoneColors, PhoneInternalMemory } from '../components';
+import { addApiShoppingCart } from '../store';
 
 const style = {
   position: 'absolute',
@@ -56,10 +57,15 @@ export const ProductDetailPage = () => {
     navigate(-1);
   };
 
-  const onAddShoppingCart = () => {
+  const onShoppingCartState = () => {
     (selectedPhoneOptions >= 101) 
-      ? dispatch(addItemToShoppingCart({ itemId: id, itemColorCode: selectedPhoneColorCode, itemStorageCode: selectedPhoneStorageCode }))
+      ? addItemToCart()
       : handleOpen();
+  }
+
+  const addItemToCart = () => {
+    dispatch(addItemToShoppingCart({ id: id, colorCode: selectedPhoneColorCode, storageCode: selectedPhoneStorageCode }));
+    dispatch(addApiShoppingCart({ id: id, colorCode: selectedPhoneColorCode, storageCode: selectedPhoneStorageCode }));
   }
 
 
@@ -115,7 +121,7 @@ export const ProductDetailPage = () => {
               arrow
           >
             <IconButton
-              onClick={onAddShoppingCart}
+              onClick={onShoppingCartState}
               sx={{
                 color: 'white',
                 pt: 2,

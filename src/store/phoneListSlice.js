@@ -7,7 +7,8 @@ export const phoneListSlice = createSlice({
         isLoading: false,
         verifiedInputValue: '',
         errorMessage: '',
-        shoppingCart: [],
+        userShoppingCart: [],
+        shoppingCartApiConfirmed: 0,
         selectedPhoneId: '',
         selectedPhoneColorCode: '',
         selectedPhoneStorageCode: '',
@@ -26,12 +27,12 @@ export const phoneListSlice = createSlice({
             state.errorMessage = '';
         },
         noApiResults: (state, action) => {
-            console.log("NO HAY RESULTADOS");
-            state.errorMessage = 'No hay modelos disponibles!';
+            console.log("THERE ARE NOT API RESULTS");
+            state.errorMessage = 'No models available!';
         },
-        addPhoneToCart: (state, action) => {
-            state.shoppingCart = action.payload.phone.id;
-            state.cartItems = shoppingCart.length;
+        addPhoneToUserCart: (state, {payload}) => {
+            let count = payload.count;
+            state.shoppingCartApiConfirmed += count;
         },
         startLoadingSelectedPhone: (state, action) => {
             state.isLoading = true;
@@ -49,7 +50,7 @@ export const phoneListSlice = createSlice({
             state.selectedPhoneOptions = 0;
         },
         addItemToShoppingCart: (state, action) => {
-            state.shoppingCart = [...state.shoppingCart, action.payload];
+            state.userShoppingCart = [...state.userShoppingCart, action.payload];
         },
         addSelectedPhoneColor: (state, action) => {
             state.selectedPhoneColorCode = action.payload;
@@ -69,6 +70,7 @@ export const {
     startLoadingPhones,
     setPhones,
     noApiResults,
+    addPhoneToUserCart,
     startLoadingSelectedPhone,
     setSelectedPhone,
     cleanSelectedPhone,
