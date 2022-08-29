@@ -10,6 +10,8 @@ import RingVolumeIcon from '@mui/icons-material/RingVolume';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -68,6 +70,11 @@ export const Header = () => {
     dispatch(getPhones({ verifiedInputValue }));
   };
 
+  const onPayItems = () => {
+    console.log('PRODUCTOS PAGADOS!!');
+    Swal.fire({ icon: 'error', title: 'Ooops..', text: 'Before paying add products in the cart.', confirmButtonColor: '#4D4D4D' });
+  };
+
   useEffect(() => {
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
@@ -81,7 +88,7 @@ export const Header = () => {
     };
   }, [inputValue]);
 
-  
+   
   return (
 
     <Box sx={{ flexGrow: 1}}>
@@ -131,6 +138,7 @@ export const Header = () => {
               <IconButton
                 size="large"
                 color="inherit"
+                onClick={onPayItems}
               >
                 <Badge badgeContent={shoppingCart.length} color="error">
                   <ShoppingCartIcon sx={{fontSize: 30}}/>
