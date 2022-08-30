@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { startLoadingPhones, getPhones } from '../store';
+import { startLoadingPhones, getPhones, cleanStore } from '../store';
 import { verifyInputValue } from '../helpers/verifyInputValue';
 
 import { AppBar, Badge, Box, IconButton, InputBase, Toolbar, Tooltip, Typography, } from '@mui/material';
@@ -71,7 +71,6 @@ export const Header = () => {
   };
 
   const onPayItems = () => {
-    
     if (shoppingCartApiConfirmed === 0) {
       Swal.fire({ icon: 'error', title: 'Ooops..', text: 'Before paying add products in the cart.', confirmButtonColor: '#4D4D4D' });
     } else {
@@ -92,6 +91,9 @@ export const Header = () => {
     };
   }, [inputValue]);
 
+  const onGoHome = () => {
+    dispatch(cleanStore());
+  };
    
   return (
 
@@ -108,6 +110,7 @@ export const Header = () => {
               color="inherit"
               aria-label="open drawer"
               sx={{ mr: 1 }}
+              onClick={onGoHome}
               href="/"
             >
               <RingVolumeIcon sx={{fontSize: 35}} />

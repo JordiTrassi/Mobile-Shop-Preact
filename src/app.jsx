@@ -1,8 +1,7 @@
 import { Provider } from 'react-redux';
-import { Header } from './components/Header';
+import { Header, ShopTimer } from './components';
 import { AppRouter } from './router/AppRouter';
-import { store } from './store/store';
-
+import { store } from './store';
 
 
 export const App = () => {
@@ -11,8 +10,8 @@ export const App = () => {
       <Provider store={store}>
         <Header />
         <AppRouter />
+        <ShopTimer />
       </Provider>
-
   )
 }
 

@@ -1,11 +1,7 @@
-import { useSelector } from 'react-redux';
-
 import { Grid } from '@mui/material';
-import { PhoneGridView } from '../views/PhoneGridView';
+import { PhoneGridView } from '../views';
 
 export const ProductListPage = () => {
-
-    const { isLoading, verifiedInputValue } = useSelector(state => state.phoneList);
 
     return (
 

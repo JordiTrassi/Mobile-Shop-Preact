@@ -1,14 +1,14 @@
 import { Fragment } from 'preact';
-import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { InitialView } from '../views/InitialView';
-import { IsLoading } from '../components/IsLoading';
+import { useNavigate } from 'react-router-dom';
+import { InitialView } from '../views';
+import { IsLoading } from '../components';
 
 
 export const HomePage = () => {
 
   const { phones, isLoading } = useSelector(state => state.phoneList);
-  
+  const navigate = useNavigate();
 
   return (
     <Fragment>
@@ -16,7 +16,7 @@ export const HomePage = () => {
         (isLoading)
           ? <IsLoading />
           : (phones.length)
-            ? <Navigate to="/list" />
+            ? navigate("/list")
             : <InitialView />
       }
     </Fragment>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSelectedPhoneColor } from '../store/phoneListSlice';
+import { addSelectedPhoneColor, cleanSelectedPhone } from '../store/phoneListSlice';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 export const PhoneColors = () => {
@@ -8,17 +8,17 @@ export const PhoneColors = () => {
     const dispatch = useDispatch();
     const { colors } = useSelector(state => state.phoneList.selectedPhone.options);
 
-    const [value, setValue] = useState(`${colors[0].code}`);
+    const [colorSelected, setColorSelected] = useState(`${colors[0].code}`);
     
     const onSelectedColor = ({target}) => {
-        setValue(target.value);
+        setColorSelected(target.value);
         dispatch(addSelectedPhoneColor(target.value))
     }
 
     useEffect(() => {
         if (colors.length === 1) {
-            dispatch(addSelectedPhoneColor(value));
-        }
+            dispatch(addSelectedPhoneColor(colorSelected));
+        }        
     },[])
     
 
@@ -29,7 +29,7 @@ export const PhoneColors = () => {
             <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
-                value={value}
+                value={colorSelected}
                 onChange={onSelectedColor}
             >
                 {                   

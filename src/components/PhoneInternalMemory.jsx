@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addSelectedPhoneMemory } from '../store/phoneListSlice';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
-
 export const PhoneInternalMemory = () => {
 
   const dispatch = useDispatch();

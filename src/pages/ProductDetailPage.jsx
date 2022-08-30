@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Box, Grid, IconButton, Modal, Tooltip, Typography } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -50,12 +50,13 @@ export const ProductDetailPage = () => {
   const handleClose = () => setOpen(false);
 
   if (!model) {
-    return <Navigate to="/home" />
+    navigate("/home");
   }
 
   const onBackPage = () => {
-    dispatch(cleanSelectedPhone());
     navigate(-1);
+    setTimeout(() => { dispatch(cleanSelectedPhone()) }, 150);
+    
   };
 
   const onShoppingCartState = () => {
