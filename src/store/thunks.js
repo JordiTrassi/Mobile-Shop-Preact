@@ -1,14 +1,13 @@
 import { setPhones, noApiResults, setSelectedPhone, addPhoneToUserCart } from './phoneListSlice';
 
-export const getPhones = ({ verifiedInputValue }) => {
+export const getPhones = () => {
     
     return async(dispatch) => {
         
-        //TODO: Filtrar busqueda
+        // Filtramos la busqueda en el lado del cliente
 
         const resp = await fetch('https://front-test-api.herokuapp.com/api/product/');
         const data = await resp.json();
-        // console.log(data);
         
         (data.code === 0)
             ? dispatch(noApiResults())

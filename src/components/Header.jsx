@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { startLoadingPhones, getPhones, cleanStore } from '../store';
 import { verifyInputValue } from '../helpers/verifyInputValue';
 
@@ -57,9 +58,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export const Header = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
-  const { shoppingCartApiConfirmed } = useSelector(state => state.phoneList);
+  const { shoppingCartApiConfirmed, phones } = useSelector(state => state.phoneList);
   
+  console.log(phones);
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
   };
@@ -67,9 +70,10 @@ export const Header = () => {
   const onSubmit = async () => {
     const verifiedInputValue = await verifyInputValue(inputValue);
     dispatch(startLoadingPhones({ verifiedInputValue }));
-    dispatch(getPhones({ verifiedInputValue }));
+    dispatch(getPhones());
   };
 
+  
   const onPayItems = () => {
     if (shoppingCartApiConfirmed === 0) {
       Swal.fire({ icon: 'error', title: 'Ooops..', text: 'Before paying add products in the cart.', confirmButtonColor: '#4D4D4D' });
@@ -78,6 +82,12 @@ export const Header = () => {
     }
   };
 
+  useEffect(() => {
+    if (phones) {
+      navigate("/list");
+    }
+  }, [phones]);
+  
   useEffect(() => {
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
@@ -125,17 +135,23 @@ export const Header = () => {
             Mobile Shop
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search mobile..."
-              value={inputValue}
-              onSubmit={onSubmit}
-              onChange={onInputChange}
-            />
-          </Search>
+          <Tooltip
+            title="Just press RETURN & see ALL PRODUCTS"
+            arrow
+            placement="bottom"
+          >
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search mobile..."
+                value={inputValue}
+                onSubmit={onSubmit}
+                onChange={onInputChange}
+              />
+              </Search>
+            </Tooltip>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip
               title="Your Cart"

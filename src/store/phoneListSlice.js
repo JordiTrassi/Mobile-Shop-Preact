@@ -7,6 +7,7 @@ export const phoneListSlice = createSlice({
         isLoading: false,
         loadedInformation: false,
         verifiedInputValue: '',
+        wantedPhones: [],
         errorMessage: '',
         userShoppingCart: [],
         shoppingCartApiConfirmed: 0,
@@ -24,9 +25,15 @@ export const phoneListSlice = createSlice({
             state.loadedInformation = true;
         },
         setPhones: (state, action) => {
-            state.isLoading = false;
+            // state.isLoading = false;
             state.phones = action.payload.phones;
             state.errorMessage = '';
+        },
+        setWantedPhones: (state, action) => {
+            state.wantedPhones = action.payload;
+            state.isLoading = false;
+            state.errorMessage = '';
+            console.log(state.wantedPhones);
         },
         noApiResults: (state, action) => {
             console.log("THERE ARE NOT API RESULTS");
@@ -84,6 +91,7 @@ export const phoneListSlice = createSlice({
 export const {
     startLoadingPhones,
     setPhones,
+    setWantedPhones,
     noApiResults,
     addPhoneToUserCart,
     startLoadingSelectedPhone,
