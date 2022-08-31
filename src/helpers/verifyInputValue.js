@@ -1,9 +1,11 @@
 export const verifyInputValue = (inputValue) => {
 
-    const verifiedInputValue = inputValue.trim().replace(/\s+/g, '+');
+    const verifiedInputValue = inputValue.toLowerCase().trim();
 
-    return verifiedInputValue; 
-   
+    let inputValueList = verifiedInputValue.split(" ");
+
+    return inputValueList;  
 } 
 
-// .toLowerCase()
+// .replace(/\s+/g, '+')
+// const rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;

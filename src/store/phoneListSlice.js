@@ -6,7 +6,7 @@ export const phoneListSlice = createSlice({
         phones: [],
         isLoading: false,
         loadedInformation: false,
-        verifiedInputValue: '',
+        inputValueList: [],
         wantedPhones: [],
         errorMessage: '',
         userShoppingCart: [],
@@ -20,12 +20,11 @@ export const phoneListSlice = createSlice({
     reducers: {
         startLoadingPhones: (state, action) => {
             state.isLoading = true;
-            state.verifiedInputValue = action.payload.verifiedInputValue;
+            state.inputValueList = action.payload.inputValueList;
             state.errorMessage = '';
             state.loadedInformation = true;
         },
         setPhones: (state, action) => {
-            // state.isLoading = false;
             state.phones = action.payload.phones;
             state.errorMessage = '';
         },
@@ -33,7 +32,6 @@ export const phoneListSlice = createSlice({
             state.wantedPhones = action.payload;
             state.isLoading = false;
             state.errorMessage = '';
-            console.log(state.wantedPhones);
         },
         noApiResults: (state, action) => {
             console.log("THERE ARE NOT API RESULTS");

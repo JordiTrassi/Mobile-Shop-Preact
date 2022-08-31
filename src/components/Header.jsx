@@ -62,14 +62,13 @@ export const Header = () => {
   const [inputValue, setInputValue] = useState('');
   const { shoppingCartApiConfirmed, phones } = useSelector(state => state.phoneList);
   
-  console.log(phones);
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
   };
 
   const onSubmit = async () => {
-    const verifiedInputValue = await verifyInputValue(inputValue);
-    dispatch(startLoadingPhones({ verifiedInputValue }));
+    const inputValueList = await verifyInputValue(inputValue);
+    dispatch(startLoadingPhones({ inputValueList }));
     dispatch(getPhones());
   };
 
