@@ -65,7 +65,10 @@ export const PhoneCard = ({
             placement="right"
             arrow
           >
-            <IconButton onClick={onSelectedPhone}>
+            <IconButton
+              aria-label="btn-detail"
+              onClick={onSelectedPhone}
+            >
               <AddCircle fontSize= 'large'/> 
             </IconButton>              
           </Tooltip>               

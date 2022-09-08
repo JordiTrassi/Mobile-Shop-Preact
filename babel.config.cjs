@@ -10,7 +10,7 @@ module.exports = {
     [ '@babel/plugin-transform-modules-commonjs', {'allowTopLevelThis': true} ],
   ],
     presets: [
-        [ '@babel/preset-env', { targets: { esmodules: true } } ],
+        [ '@babel/preset-env', { targets: { node: 'current' } } ],
         [ '@babel/preset-react', { runtime: 'automatic' } ],
     ],
 };

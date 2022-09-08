@@ -1,10 +1,9 @@
 <h1 align="center">Mobile Shop App <img src="https://icon-library.com/images/icon-for-mobile/icon-for-mobile-27.jpg" alt="music-app" width="40" height="40" /> created with Preact & Vite</h1>
 
-<h3>App created with React Vite and Preact.</h3> 
+<h3>App created with Preact and Vite.</h3> 
 <p>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40" /> 
-<img src="https://vectorwiki.com/images/bjlcA__vitejs.svg" alt="vitejs" width="40" height="40" />
 <img src="https://preactjs.com/assets/app-icon.png" alt="preact" width="40" height="40" />
+<img src="https://vectorwiki.com/images/bjlcA__vitejs.svg" alt="vitejs" width="40" height="40" />
 </p>
 
 I used Material UI and SweetAlert2 and Testing with Jest.

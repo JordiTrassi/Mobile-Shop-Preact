@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pruebas en el componente <PhoneCard /> Debe de hacer match con el snapshot 1`] = `
+exports[`Pruebas en el componente <PhoneCard /> Debe de hacer match con el snapshot con los valores enviados por props 1`] = `
 <div>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root animate__animated animate__fadeIn css-ame1d1-MuiPaper-root-MuiCard-root"
@@ -14,14 +14,19 @@ exports[`Pruebas en el componente <PhoneCard /> Debe de hacer match con el snaps
         <div
           class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
           data-testid="test-collectionName"
-        />
+        >
+          Samsung
+        </div>
         <div
           class="MuiTypography-root MuiTypography-subtitle1 css-ecpxie-MuiTypography-root"
-        />
+        >
+          Phone Model Test
+        </div>
         <div
           class="MuiTypography-root MuiTypography-h5 css-9hy38x-MuiTypography-root"
         >
           Price: 
+          150
            €
         </div>
       </div>
@@ -29,7 +34,7 @@ exports[`Pruebas en el componente <PhoneCard /> Debe de hacer match con el snaps
         class="MuiBox-root css-1ndgitk"
       >
         <button
-          aria-label="more info"
+          aria-label="btn-detail"
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
           data-mui-internal-clone-element="true"
           tabindex="0"
@@ -53,7 +58,9 @@ exports[`Pruebas en el componente <PhoneCard /> Debe de hacer match con el snaps
       </div>
     </div>
     <img
+      alt="Phone Model Test"
       class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-16z2ejl-MuiCardMedia-root"
+      src="phone_test_img.jpg"
     />
   </div>
 </div>
