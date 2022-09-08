@@ -1,6 +1,6 @@
+import { h } from 'preact';
 import { CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/material';
-
 
 export const IsLoading = () => {
   

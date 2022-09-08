@@ -1,9 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/preact';
+import { render, screen } from '@testing-library/preact';
 import { h } from 'preact';
 import { Provider } from 'react-redux';
-import { PhoneCard } from '../../src/components/PhoneCard';
-import { store } from '../../src/store/store'
 import { BrowserRouter } from 'react-router-dom';
+import { PhoneCard } from '../../src/components/PhoneCard';
+import { store } from '../../src/store/store';
 
 const props = {
     brand: 'Samsung',
