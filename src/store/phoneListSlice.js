@@ -1,3 +1,4 @@
+import { CollectionsOutlined, ConstructionOutlined } from '@mui/icons-material';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const phoneListSlice = createSlice({
@@ -78,7 +79,6 @@ export const phoneListSlice = createSlice({
             state.selectedPhoneStorageCode = '';
             state.selectedPhone = {};
             state.selectedPhoneOptions = 0;
-            console.log("Se ha limpiado el store");
         },
         
 
