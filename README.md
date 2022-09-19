@@ -17,7 +17,7 @@ The API used contains 100 products, if we click Return directly in the Search Bo
 The user can search for a specific model by entering the manufacturer and/or model, too.
 
 
-<a href="https://trassi-mobile-shop.netlify.app/home"><h3 align="center">Visit my App at Netlify!</h3></a>
+<a href="https://trassi-mobile-shop.netlify.app"><h3 align="center">Visit my App at Netlify!</h3></a>
 
 
 In order to execute the app you must install the dependencies:
