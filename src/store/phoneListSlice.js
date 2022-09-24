@@ -1,4 +1,3 @@
-import { CollectionsOutlined, ConstructionOutlined } from '@mui/icons-material';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const phoneListSlice = createSlice({

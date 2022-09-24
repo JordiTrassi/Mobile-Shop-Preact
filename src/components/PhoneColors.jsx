@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSelectedPhoneColor, cleanSelectedPhone } from '../store/phoneListSlice';
+import { addSelectedPhoneColor } from '../store/phoneListSlice';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 export const PhoneColors = () => {
