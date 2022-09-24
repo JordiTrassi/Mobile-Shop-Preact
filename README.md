@@ -26,4 +26,4 @@ In order to execute the app you must install the dependencies:
 
 In the project directory, you can run the app in the development mode:
 
-### `npm run dev`
+### `npm run start`
